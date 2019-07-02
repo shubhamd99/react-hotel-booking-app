@@ -2,20 +2,30 @@
   "name": "hotel-booking-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shubhamd99.github.io/react-hotel-booking-app/",
   "dependencies": {
     "@types/jest": "24.0.15",
     "@types/node": "12.0.10",
     "@types/react": "16.8.22",
     "@types/react-dom": "16.8.4",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "styled-components": "^4.3.2",
     "typescript": "3.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:css": "node-sass src/assets/styles/sass/ -o src/assets/styles/css/",
+    "watch:css": "npm run build:css && node-sass src/assets/styles/sass/ -o src/assets/styles/css/ --watch --recursive",
+    "start:js": "react-scripts start",
+    "start": "npm-run-all -p watch:css start:js",
+    "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -32,5 +42,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node-sass": "^4.11.0",
+    "@types/react-icons": "^3.0.0",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/styled-components": "^4.1.16",
+    "gh-pages": "^2.0.1",
+    "npm-run-all": "^4.1.5"
   }
 }
